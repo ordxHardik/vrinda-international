@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vrinda International – Global Talent & Career Partner</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ============================================================
+           RESET & CSS VARIABLES
+        ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0B1F4B;
+            --blue: #1756A9;
+            --gold: #ef9b15;
+            --pink: #E91E8C;
+            --light: #F4F7FC;
+            --white: #FFFFFF;
+            --text: #2C2C3A;
+            --muted: #6B7280;
+            --border: #DDE3EF;
+            --radius: 10px;
+            --shadow: 0 4px 24px rgba(11, 31, 75, 0.10);
+            --site-bg: #DBFFFB;
+            --countries-bg: #568DBF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--site-bg);
+            line-height: 1.65;
+            font-size: 15px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================================
+           TOP BAR
+        ============================================================ */
+        .topbar {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 12px;
+            letter-spacing: 0.4px;
+            padding: 7px 0;
+        }
+
+        .topbar .container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .topbar-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* ============================================================
+           HEADER / NAV
+        ============================================================ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(219, 255, 251, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(11, 31, 75, 0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            background: var(--navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item>a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--navy);
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-item>a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+            transition: width 0.25s;
+        }
+
+        .nav-item>a:hover {
+            color: var(--blue);
+        }
+
+        .nav-item>a:hover::after {
+            width: 100%;
+        }
+
+        .nav-item.has-dropdown>a .chevron {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-right: 1.8px solid currentColor;
+            border-bottom: 1.8px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.22s;
+            margin-left: 2px;
+            position: relative;
+            top: -1px;
+        }
+
+        .nav-item.has-dropdown:hover>a .chevron {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 12px 40px rgba(11, 31, 75, 0.14);
+            min-width: 200px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+            z-index: 200;
+        }
+
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 11px;
+            height: 11px;
+            background: var(--white);
+            border-left: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+            border-radius: 2px 0 0 0;
+        }
+
+        .nav-item.has-dropdown:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 9px 20px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text);
+            transition: background 0.15s, color 0.15s, padding-left 0.15s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown a:hover {
+            background: var(--light);
+            color: var(--blue);
+            padding-left: 24px;
+            border-left-color: var(--blue);
+        }
+
+        .nav-cta {
+            background: var(--blue);
+            color: var(--white) !important;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: var(--navy) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* ============================================================
+           HERO SECTION
+        ============================================================ */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            background: linear-gradient(135deg, var(--navy) 0%, #6078ad 55%, #b3c6e0 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        .hero-carousel-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-carousel-track {
+            display: flex;
+            animation: carouselRTL 28s linear infinite;
+            will-change: transform;
+        }
+
+        .hero-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes carouselRTL {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .hero-slide {
+            position: relative;
+            flex-shrink: 0;
+            width: 480px;
+            height: 600px;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 31, 75, 0.3) 0%, rgba(92, 142, 208, 0.15) 100%);
+        }
+
+        .hero-left-fade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 55%;
+            background: linear-gradient(to right, rgba(11, 31, 75, 0.5) 0%, rgba(11, 31, 75, 0.3) 70%, transparent 20%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-right-fade {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 25%;
+            background: linear-gradient(to left, rgba(11, 31, 75, 0.7) 0%, transparent 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding: 0 48px;
+            max-width: 620px;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge span {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 4vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .hero-cycle {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            height: 1.15em;
+        }
+
+        .hero-cycle-inner {
+            display: flex;
+            flex-direction: column;
+            animation: cyclePhrases 9s steps(1) infinite;
+        }
+
+        @keyframes cyclePhrases {
+            0% {
+                transform: translateY(0);
+            }
+
+            33% {
+                transform: translateY(-1.15em);
+            }
+
+            66% {
+                transform: translateY(-2.3em);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cycle-inner span {
+            display: block;
+            height: 1.15em;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 440px;
+            margin-bottom: 36px;
+            line-height: 1.75;
+        }
+
+        .hero-btns {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 13px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+        }
+
+        .btn-primary svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .btn-outline {
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            padding: 12px 26px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-stats-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: rgba(11, 31, 75, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-stat-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat-pill:last-child {
+            border-right: none;
+        }
+
+        .hero-stat-icon {
+            font-size: 20px;
+        }
+
+        .hero-stat-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.4;
+        }
+
+        .hero-stat-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           SECTION LABEL
+        ============================================================ */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(26px, 3vw, 36px);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            max-width: 540px;
+            font-size: 15px;
+        }
+
+        /* ============================================================
+           CORE VERTICALS SECTION
+        ============================================================ */
+        .verticals {
+            padding: 80px 0;
+            background: rgba(219, 255, 251, 0.6);
+        }
+
+        .verticals-head {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .verticals-head .section-label {
+            justify-content: center;
+        }
+
+        .verticals-head .section-label::before {
+            display: none;
+        }
+
+        .verticals-head .section-desc {
+            margin: 0 auto;
+        }
+
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .vertical-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.28s, box-shadow 0.28s;
+            border: 1px solid var(--border);
+        }
+
+        .vertical-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(11, 31, 75, 0.14);
+        }
+
+        .vertical-img {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vertical-img img {
+            height: 100%;
+            transition: transform 0.4s;
+        }
+
+        .vertical-card:hover .vertical-img img {
+            transform: scale(1.05);
+        }
+
+        .vertical-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 31, 75, 0.55) 0%, transparent 60%);
+        }
+
+        .vertical-body {
+            padding: 22px 24px 28px;
+        }
+
+        .vertical-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            margin-top: -36px;
+            position: relative;
+            box-shadow: 0 4px 14px rgba(23, 86, 169, 0.3);
+        }
+
+        .vertical-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        .vertical-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .vertical-card p {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .vertical-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 13px;
+            margin-top: 14px;
+            transition: gap 0.2s;
+        }
+
+        .vertical-link:hover {
+            gap: 10px;
+        }
+
+        /* ============================================================
+           WEBINAR BANNER
+        ============================================================ */
+        .webinar-banner {
+            background: var(--navy);
+            color: var(--white);
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .webinar-banner::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--gold);
+        }
+
+        .webinar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .webinar-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .webinar-badge {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .webinar-date {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .webinar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .webinar-cta {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 11px 26px;
+            border-radius: 6px;
+            white-space: nowrap;
+            transition: transform 0.2s;
+        }
+
+        .webinar-cta:hover {
+            transform: scale(1.04);
+        }
+
+        /* ============================================================
+           TESTIMONIALS SECTION — UPDATED WITH AVATARS + RESPONSIVE
+        ============================================================ */
+        .testimonials {
+            padding: 88px 0;
+            background: rgba(219, 255, 251, 0.5);
+        }
+
+        .testimonials-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .testimonials-left h2 {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.18;
+            margin-bottom: 18px;
+        }
+
+        .testimonials-left h2 em {
+            color: var(--blue);
+            font-style: normal;
+        }
+
+        .testimonials-left p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 280px;
+            margin-bottom: 32px;
+        }
+
+        .testimonials-arrows {
+            display: flex;
+            gap: 12px;
+        }
+
+        .arrow-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+            box-shadow: 0 2px 8px rgba(11, 31, 75, 0.07);
+        }
+
+        .arrow-btn:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            transform: scale(1.07);
+        }
+
+        .arrow-btn:hover svg {
+            stroke: var(--white);
+        }
+
+        .arrow-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--navy);
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.2s;
+        }
+
+        /* Dots */
+        .testimonials-dots {
+            display: flex;
+            gap: 6px;
+            margin-top: 20px;
+        }
+
+        .testimonials-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            padding: 0;
+        }
+
+        .testimonials-dot.active {
+            background: var(--blue);
+            transform: scale(1.3);
+        }
+
+        .testimonials-right {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Review card — with avatar */
+        .review-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 24px 22px 22px;
+            width: calc(50% - 10px);
+            flex-shrink: 0;
+            box-shadow: 0 4px 28px rgba(11, 31, 75, 0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: box-shadow 0.25s;
+            height: fit-content;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 12px 40px rgba(11, 31, 75, 0.13);
+        }
+
+        /* Avatar + name header */
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .review-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid #EBF3FF;
+        }
+
+        .review-meta {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .review-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .review-placement {
+            font-size: 11.5px;
+            color: var(--blue);
+            font-weight: 600;
+            margin-top: 1px;
+        }
+
+        .review-role {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .review-platform {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .review-platform svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .review-platform span {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 4px;
+        }
+
+        .review-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: #F5A623;
+        }
+
+        .review-quote {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.72;
+            flex: 1;
+            display: block;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .review-company-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #EBF3FF;
+            color: var(--blue);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            width: fit-content;
+        }
+
+        /* Mobile: 1 card */
+        @media (max-width: 768px) {
+            .testimonials-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .testimonials-left p {
+                max-width: 100%;
+            }
+
+            .review-card {
+                min-width: 100%;
+            }
+        }
+
+        /* ============================================================
+           ABOUT SECTION
+        ============================================================ */
+        .about {
+            padding: 88px 0;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-imgs {
+            position: relative;
+            height: 460px;
+        }
+
+        .about-img-main {
+            width: 75%;
+            height: 360px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .about-img-secondary {
+            width: 55%;
+            height: 240px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(11, 31, 75, 0.14);
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 4px solid var(--white);
+        }
+
+        .about-badge-float {
+            position: absolute;
+            bottom: 40px;
+            right: 0;
+            background: var(--blue);
+            color: var(--white);
+            border-radius: 10px;
+            padding: 14px 18px;
+            box-shadow: 0 8px 24px rgba(23, 86, 169, 0.3);
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .about-badge-float strong {
+            display: block;
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .about h2 {
+            margin-bottom: 16px;
+        }
+
+        .about p {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .about-features {
+            list-style: none;
+            margin: 28px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .about-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .feature-check {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            background: #EBF3FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .feature-check svg {
+            width: 11px;
+            height: 11px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        /* ============================================================
+           FOUNDER SECTION
+        ============================================================ */
+        .founder {
+            padding: 88px 0;
+            background: rgba(219, 255, 251, 0.5);
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .founder-img-wrap {
+            position: relative;
+            height: 440px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .founder-img-wrap img {
+            height: 100%;
+            object-position: top;
+        }
+
+        .founder-ribbon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(11, 31, 75, 0.9), transparent);
+            padding: 28px 24px 20px;
+            color: var(--white);
+        }
+
+        .founder-ribbon h4 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .founder-ribbon span {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .founder-content h2 {
+            margin-bottom: 16px;
+        }
+
+        .founder-content p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .founder-creds {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 24px 0;
+        }
+
+        .cred-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--blue);
+            min-width: 8px;
+        }
+
+        .founder-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .founder-stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .founder-stat-card .num {
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .founder-stat-card .lbl {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           COUNTRIES SECTION
+        ============================================================ */
+        .countries {
+            background: var(--countries-bg);
+            position: relative;
+            overflow: hidden;
+            max-height: 270px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 28px 0;
+        }
+
+        .countries-head {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .countries-head .section-label {
+            color: rgba(255, 255, 255, 0.85);
+            justify-content: center;
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+
+        .countries-head .section-label::before {
+            display: none;
+        }
+
+        .countries-head .section-title {
+            color: #fff;
+            font-size: clamp(18px, 2vw, 24px);
+            margin-bottom: 0;
+        }
+
+        .countries-head .section-title em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .countries-head .title-underline {
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 3px;
+            margin: 8px auto 0;
+        }
+
+        .countries-marquee {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .countries-marquee::before,
+        .countries-marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .countries-marquee::before {
+            left: 0;
+            background: linear-gradient(to right, var(--countries-bg), transparent);
+        }
+
+        .countries-marquee::after {
+            right: 0;
+            background: linear-gradient(to left, var(--countries-bg), transparent);
+        }
+
+        .countries-track {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            width: max-content;
+            animation: marqueeScroll 22s linear infinite;
+        }
+
+        .countries-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marqueeScroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .country-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .country-flag-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .country-card:hover .country-flag-wrap {
+            transform: rotate(360deg);
+            border-color: var(--gold);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(245, 166, 35, 0.4);
+        }
+
+        .country-flag-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .country-name {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-weight: 700;
+            font-size: 11.5px;
+            padding: 4px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .country-card:hover .country-name {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        /* ============================================================
+           GOOGLE TESTIMONIALS SECTION
+        ============================================================ */
+        .g-testimonials {
+            background: linear-gradient(135deg, #0d1b2e 0%, #1a2a42 50%, #0f1e35 100%);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .g-testimonials::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .g-testimonials-title {
+            text-align: center;
+            color: #fff;
+            font-size: clamp(26px, 3.5vw, 40px);
+            font-weight: 800;
+            margin-bottom: 48px;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .g-testimonials-body {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+        }
+
+        .g-left-panel {
+            flex-shrink: 0;
+            width: 180px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .g-excellent {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .g-big-stars {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 8px;
+        }
+
+        .g-big-stars svg {
+            width: 30px;
+            height: 30px;
+            fill: #F5A623;
+        }
+
+        .g-review-count {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 14px;
+        }
+
+        .g-review-count span {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+        }
+
+        .g-google-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .g-google-logo .gc1 {
+            color: #4285F4;
+        }
+
+        .g-google-logo .gc2 {
+            color: #EA4335;
+        }
+
+        .g-google-logo .gc3 {
+            color: #FBBC04;
+        }
+
+        .g-google-logo .gc4 {
+            color: #4285F4;
+        }
+
+        .g-google-logo .gc5 {
+            color: #34A853;
+        }
+
+        .g-google-logo .gc6 {
+            color: #EA4335;
+        }
+
+        .g-slider-wrap {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .g-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .g-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px 20px 18px;
+            min-width: calc(33.333% - 14px);
+            width: calc(33.333% - 14px);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .g-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .g-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .g-card-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .g-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .g-user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .g-user-name {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .g-user-time {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .g-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .g-card-stars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .g-card-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: #F5A623;
+        }
+
+        .g-card-text {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.65;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .g-read-more {
+            font-size: 12px;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .g-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s, transform 0.15s;
+            backdrop-filter: blur(4px);
+        }
+
+        .g-arrow:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .g-arrow svg {
+            width: 14px;
+            height: 14px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .g-arrow-prev {
+            left: -19px;
+        }
+
+        .g-arrow-next {
+            right: -19px;
+        }
+
+        .g-trustindex {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .g-trustindex-badge {
+            background: #1a8a5a;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .g-trustindex-badge svg {
+            width: 14px;
+            height: 14px;
+            fill: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 28px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 13.5px;
+            line-height: 1.75;
+            max-width: 260px;
+        }
+
+        footer h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        footer ul li a {
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, 0.65);
+            transition: color 0.2s;
+        }
+
+        footer ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact p {
+            font-size: 13.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--gold);
+            min-width: 14px;
+            margin-top: 2px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, 0.4);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1024px) {
+            .g-card {
+                min-width: calc(50% - 10px);
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .about-grid,
+            .founder-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 0 28px;
+                max-width: 100%;
+            }
+
+            .verticals-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .about-imgs {
+                height: 320px;
+            }
+
+            .founder-img-wrap {
+                height: 300px;
+            }
+
+            .hero-stats-bar {
+                flex-wrap: wrap;
+            }
+
+            .hero-stat-pill {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-left p {
+                max-width: 100%;
+            }
+
+            .review-card {
+                min-width: 100%;
+            }
+
+            .g-testimonials-body {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .g-left-panel {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .g-card {
+                min-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .verticals-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-slide {
+                width: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="container">
+            <span class="topbar-dot"></span>
+            Global Talent &amp; Career Partner &nbsp;|&nbsp; Trusted by growing businesses worldwide
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="container">
+            <div class="nav-inner">
+                <div class="logo">
+                    <div class="logo-mark">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="logo-text">Vrinda</div>
+                        <div class="logo-sub">International</div>
+                    </div>
+                </div>
+
+                <nav>
+                    <div class="nav-item"><a href="#">Home</a></div>
+                    <div class="nav-item"><a href="#">About Us</a></div>
+                    <div class="nav-item has-dropdown">
+                        <a href="#">Services <span class="chevron"></span></a>
+                        <div class="dropdown">
+                            <a href="#">Study Visa</a>
+                            <a href="#">Visitor Visa</a>
+                            <a href="#">Allied Services</a>
+                            <a href="#">Pathway Study Abroad</a>
+                            <a href="#">Online Study</a>
+                            <a href="#">Vrinda PrepMaster</a>
+                        </div>
+                    </div>
+                    <div class="nav-item has-dropdown">
+                        <a href="#">Country <span class="chevron"></span></a>
+                        <div class="dropdown">
+                            <a href="#">Australia</a>
+                            <a href="#">Canada</a>
+                            <a href="#">United Kingdom</a>
+                            <a href="#">Germany</a>
+                            <a href="#">USA</a>
+                        </div>
+                    </div>
+                    <div class="nav-item has-dropdown">
+                        <a href="#">Programs <span class="chevron"></span></a>
+                        <div class="dropdown">
+                            <a href="#">Immigration</a>
+                            <a href="#">Student Visa</a>
+                            <a href="#">Travel Agency</a>
+                            <a href="#">Citizenship</a>
+                            <a href="#">Work Visa</a>
+                        </div>
+                    </div>
+                    <div class="nav-item"><a href="#">Webinars</a></div>
+                    <a href="#" class="nav-cta">Contact Us</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-carousel-strip">
+            <div class="hero-carousel-track" id="heroTrack">
+                <div class="hero-slide"><img
+                        src="https://res.cloudinary.com/dlns0izre/image/upload/v1778526792/pic2_nvopaf.jpg"
+                        alt="Airport travel" /></div>
+
+                <div class="hero-slide"><img
+                        src="https://res.cloudinary.com/dlns0izre/image/upload/v1778526792/pic_5_mfoaxu.jpg"
+                        alt="University campus" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop"
+                        alt="Immigration consultant" /></div>
+                <div class="hero-slide"><img
+                        src="https://res.cloudinary.com/dlns0izre/image/upload/v1778526791/pic4_kitys0.jpg"
+                        alt="Business professional" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop"
+                        alt="Team meeting" /></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="hero-slide"><img
+                        src="https://res.cloudinary.com/dlns0izre/image/upload/v1778526792/pic3_capreh.jpg"
+                        alt="Airport travel" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&auto=format&fit=crop"
+                        alt="Study abroad" /></div>
+                <div class="hero-slide"><img
+                        src="https://res.cloudinary.com/dlns0izre/image/upload/v1778527084/pic6_xkji1a.jpg"
+                        alt="University campus" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop"
+                        alt="Immigration consultant" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80&auto=format&fit=crop"
+                        alt="Business professional" /></div>
+                <div class="hero-slide"><img
+                        src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop"
+                        alt="Team meeting" /></div>
+            </div>
+        </div>
+
+        <div class="hero-left-fade"></div>
+        <div class="hero-right-fade"></div>
+
+        <div class="hero-content-wrap">
+            <div class="hero-content">
+                <div class="hero-badge"><span></span> Global Visa &amp; Immigration Partner</div>
+                <h1>
+                    Your Gateway to<br>
+                    <span class="hero-cycle">
+                        <span class="hero-cycle-inner">
+                            <span>Study Abroad</span>
+                            <span>Work Globally</span>
+                            <span>Immigrate Easily</span>
+                        </span>
+                    </span>
+                </h1>
+                <p>From study visas to permanent residency — we guide you every step of the way. Trusted by thousands
+                    across 190+ countries for seamless visa and immigration solutions.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn-primary">
+                        Get Free Consultation
+                        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 7h12M8 2l5 5-5 5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="btn-outline">Our Services</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-stats-bar">
+            <div class="hero-stat-pill">
+                <div class="hero-stat-icon">🏢</div>
+                <div class="hero-stat-text"><strong>500+</strong>Students Placed</div>
+            </div>
+            <div class="hero-stat-pill">
+                <div class="hero-stat-icon">🌐</div>
+                <div class="hero-stat-text"><strong>190+</strong>Countries Covered</div>
+            </div>
+            <div class="hero-stat-pill">
+                <div class="hero-stat-icon">⭐</div>
+                <div class="hero-stat-text"><strong>95%</strong>Visa Success Rate</div>
+            </div>
+            <div class="hero-stat-pill">
+                <div class="hero-stat-icon">📋</div>
+                <div class="hero-stat-text"><strong>15+</strong>Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE VERTICALS SECTION -->
+    <section class="verticals">
+        <div class="container">
+            <div class="verticals-head">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title">Our Core Verticals</h2>
+                <p class="section-desc">We operate across three high-impact service areas to connect talent, open global
+                    pathways, and build professional skills.</p>
+            </div>
+            <div class="verticals-grid">
+                <div class="vertical-card">
+                    <div class="vertical-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop"
+                            alt="Recruitment Services" />
+                        <div class="vertical-img-overlay"></div>
+                    </div>
+                    <div class="vertical-body">
+                        <div class="vertical-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                            </svg>
+                        </div>
+                        <h3>Recruitment Services</h3>
+                        <p>Strategic staffing solutions from executive search to bulk staffing using an extensive talent
+                            network.</p>
+                        <a href="#" class="vertical-link">Explore →</a>
+                    </div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-img">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80&auto=format&fit=crop"
+                            alt="Overseas Education" />
+                        <div class="vertical-img-overlay"></div>
+                    </div>
+                    <div class="vertical-body">
+                        <div class="vertical-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                            </svg>
+                        </div>
+                        <h3>Overseas Education</h3>
+                        <p>Comprehensive support for university admissions, visa applications, and international
+                            education guidance.</p>
+                        <a href="#" class="vertical-link">Explore →</a>
+                    </div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-img">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80&auto=format&fit=crop"
+                            alt="Online Programs" />
+                        <div class="vertical-img-overlay"></div>
+                    </div>
+                    <div class="vertical-body">
+                        <div class="vertical-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg>
+                        </div>
+                        <h3>Online Programs / Coaching</h3>
+                        <p>Complete support for IELTS, GRE, GMAT, and online career programs designed for global
+                            success.</p>
+                        <a href="#" class="vertical-link">Explore →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEBINAR BANNER -->
+    <div class="webinar-banner">
+        <div class="container">
+            <div class="webinar-inner">
+                <div class="webinar-left">
+                    <div class="webinar-badge">📅 Upcoming Webinar</div>
+                    <div>
+                        <div class="webinar-title">UPCOMING WEBINAR</div>
+                        <div class="webinar-date">Register now to secure your spot — limited seats available</div>
+                    </div>
+                </div>
+                <a href="#" class="webinar-cta">Register Now →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TESTIMONIALS SECTION — UPDATED
+         Desktop: 2 cards visible | Mobile: 1 card visible
+         Each card has avatar photo, name, placement, role, quote
+    ============================================================ -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-inner">
+
+                <!-- LEFT: heading + controls -->
+                <div class="testimonials-left">
+                    <h2>Happy Candidates Reflect on Their <em>Journey with Us</em></h2>
+                    <p>Build Your Career with Confidence:
+                        Helping Candidates Get Placed in Top MNCs and Growing Companies Across India & Globally.</p>
+                    <div class="testimonials-arrows">
+                        <button class="arrow-btn" id="prev-btn" aria-label="Previous review">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </button>
+                        <button class="arrow-btn" id="next-btn" aria-label="Next review">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="testimonials-dots" id="testimonials-dots"></div>
+                </div>
+
+                <!-- RIGHT: sliding cards -->
+                <div class="testimonials-right">
+                    <div class="testimonials-track" id="reviews-track">
+
+                        <!-- Review 1 — Rahul Sharma / Wipro -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img class="review-avatar"
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&auto=format"
+                                    alt="Rahul Sharma" />
+                                <div class="review-meta">
+                                    <div class="review-name">Rahul Sharma</div>
+                                    <div class="review-placement">Placed at Wipro</div>
+                                    <div class="review-role">Business Analyst</div>
+                                </div>
+                                <div class="review-platform">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12 2L9.09 8.26L2 9.27L7 14.14L5.82 21L12 17.77L18.18 21L17 14.14L22 9.27L14.91 8.26L12 2Z"
+                                            fill="#00B67A" stroke="#00B67A" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Trustpilot</span>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                            </div>
+                            <p class="review-quote">"I was struggling to switch my job profile and was not getting
+                                shortlisted for interviews. The team guided me with resume optimization, interview
+                                preparation, and profile positioning. Within a few weeks, I got placed at Wipro as a
+                                Business Analyst. Their support throughout the process was excellent."</p>
+                            <div class="review-company-badge">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
+                                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                                </svg>
+                                Wipro — Business Analyst
+                            </div>
+                        </div>
+
+                        <!-- Review 2 — Priya Verma / Infosys -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img class="review-avatar"
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&auto=format"
+                                    alt="Priya Verma" />
+                                <div class="review-meta">
+                                    <div class="review-name">Priya Verma</div>
+                                    <div class="review-placement">Placed at Infosys</div>
+                                    <div class="review-role">Java Backend Developer</div>
+                                </div>
+                                <div class="review-platform">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12 2L9.09 8.26L2 9.27L7 14.14L5.82 21L12 17.77L18.18 21L17 14.14L22 9.27L14.91 8.26L12 2Z"
+                                            fill="#00B67A" stroke="#00B67A" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Trustpilot</span>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                            </div>
+                            <p class="review-quote">"I had applied to many companies but was facing rejection due to
+                                lack of confidence and interview strategy. After joining their career support program, I
+                                received proper mentoring and mock interview sessions. Finally, I got selected at
+                                Infosys for the role of Java Backend Developer."</p>
+                            <div class="review-company-badge">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
+                                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                                </svg>
+                                Infosys — Java Backend Developer
+                            </div>
+                        </div>
+
+                        <!-- Review 3 — Aman Gupta / PwC -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img class="review-avatar"
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&auto=format"
+                                    alt="Aman Gupta" />
+                                <div class="review-meta">
+                                    <div class="review-name">Aman Gupta</div>
+                                    <div class="review-placement">Placed at PwC</div>
+                                    <div class="review-role">Data Analyst</div>
+                                </div>
+                                <div class="review-platform">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12 2L9.09 8.26L2 9.27L7 14.14L5.82 21L12 17.77L18.18 21L17 14.14L22 9.27L14.91 8.26L12 2Z"
+                                            fill="#00B67A" stroke="#00B67A" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Trustpilot</span>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                            </div>
+                            <p class="review-quote">"The guidance and placement support were very professional. They
+                                helped me understand how to present my experience and improve my communication skills. I
+                                successfully got placed at PwC as a Data Analyst. I'm really thankful for their
+                                continuous support."</p>
+                            <div class="review-company-badge">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
+                                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                                </svg>
+                                PwC — Data Analyst
+                            </div>
+                        </div>
+
+                        <!-- Review 4 — Neha Kapoor / ServiceNow -->
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img class="review-avatar"
+                                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&auto=format"
+                                    alt="Neha Kapoor" />
+                                <div class="review-meta">
+                                    <div class="review-name">Neha Kapoor</div>
+                                    <div class="review-placement">IT Role Placement</div>
+                                    <div class="review-role">ServiceNow Developer</div>
+                                </div>
+                                <div class="review-platform">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M12 2L9.09 8.26L2 9.27L7 14.14L5.82 21L12 17.77L18.18 21L17 14.14L22 9.27L14.91 8.26L12 2Z"
+                                            fill="#00B67A" stroke="#00B67A" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Trustpilot</span>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l2.09 6.26H21l-5.47 3.97 2.09 6.26L12 14.52l-5.62 4.07 2.09-6.26L3 8.26h6.91z" />
+                                </svg>
+                            </div>
+                            <p class="review-quote">"I wanted to transition into a better IT role with career growth
+                                opportunities. Their team helped me with career counseling, technical interview
+                                preparation, and LinkedIn branding. I recently got placed as a ServiceNow Developer at a
+                                reputed IT company with a great salary package."</p>
+                            <div class="review-company-badge">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
+                                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                                </svg>
+                                ServiceNow Developer
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-imgs">
+                    <div class="about-img-main">
+                        <img src="https://res.cloudinary.com/dlns0izre/image/upload/v1778526363/ChatGPT_Image_May_12_2026_12_29_28_AM_nevhp5.png"
+                            alt="Vrinda International office" />
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="https://res.cloudinary.com/dlns0izre/image/upload/v1778525525/WhatsApp_Image_2026-05-09_at_4.25.29_PM_nokb7j.jpg"
+                            alt="Team meeting" />
+                    </div>
+                    <div class="about-badge-float">
+                        <strong>10+</strong>
+                        Years of trusted expertise
+                    </div>
+                </div>
+                <div>
+                    <div class="section-label">Who We Are</div>
+                    <h2 class="section-title">Glimpse of Vrinda International</h2>
+                    <p>Vrinda International is a trusted recruitment and education consultancy committed to connecting
+                        talent with the right opportunities and growth pathways.</p>
+                    <p>Our streamlined recruitment process, extensive talent network, and commitment to quality help
+                        businesses build strong and future-ready teams.</p>
+                    <p>At Vrinda International, success is our mission.</p>
+                    <ul class="about-features">
+                        <li><span class="feature-check"><svg viewBox="0 0 12 12">
+                                    <polyline points="2,6 5,9 10,3" />
+                                </svg></span>Streamlined, tech-enabled recruitment process</li>
+                        <li><span class="feature-check"><svg viewBox="0 0 12 12">
+                                    <polyline points="2,6 5,9 10,3" />
+                                </svg></span>Extensive global talent network across industries</li>
+                        <li><span class="feature-check"><svg viewBox="0 0 12 12">
+                                    <polyline points="2,6 5,9 10,3" />
+                                </svg></span>Comprehensive overseas education guidance</li>
+                        <li><span class="feature-check"><svg viewBox="0 0 12 12">
+                                    <polyline points="2,6 5,9 10,3" />
+                                </svg></span>Support for IELTS, GRE, GMAT and career programs</li>
+                    </ul>
+                    <a href="#" class="btn-primary"
+                        style="background:var(--blue);color:var(--white);display:inline-flex;">
+                        Learn More About Us
+                        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"
+                            style="width:14px;height:14px;">
+                            <path d="M1 7h12M8 2l5 5-5 5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER SECTION -->
+    <section class="founder">
+        <div class="container">
+            <div class="founder-grid">
+                <div>
+                    <div class="section-label">Leadership</div>
+                    <h2 class="section-title">Meet the Founder: Vikas Sharma</h2>
+                    <p>Vikas Sharma, the visionary entrepreneur and Founder of Vrinda International, brings over 15
+                        years of cross-industry leadership spanning Recruitment, Finance, and Education.</p>
+                    <p>With an MBA in Marketing and Finance from IGTM, Pune, Vikas has built Vrinda International into a
+                        nationally recognized brand bridging the gap between businesses and top-tier talent.</p>
+                    <p>Today, Vrinda International stands as a trusted partner for both students and professionals.</p>
+                    <ul class="about-features founder-creds">
+                        <li><span class="cred-dot"></span>MBA – Marketing &amp; Finance, IGTM Pune</li>
+                        <li><span class="cred-dot"></span>15+ years cross-industry leadership experience</li>
+                        <li><span class="cred-dot"></span>Expertise in Recruitment, Finance &amp; Education</li>
+                        <li><span class="cred-dot"></span>Nationally recognized entrepreneur and mentor</li>
+                    </ul>
+                    <div class="founder-stats">
+                        <div class="founder-stat-card">
+                            <div class="num">15+</div>
+                            <div class="lbl">Years Experience</div>
+                        </div>
+                        <div class="founder-stat-card">
+                            <div class="num">500+</div>
+                            <div class="lbl">Students Placed</div>
+                        </div>
+                        <div class="founder-stat-card">
+                            <div class="num">50+</div>
+                            <div class="lbl">Companies Served</div>
+                        </div>
+                        <div class="founder-stat-card">
+                            <div class="num">95%</div>
+                            <div class="lbl">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="founder-img-wrap">
+                    <img src="https://res.cloudinary.com/dlns0izre/image/upload/v1778525422/WhatsApp_Image_2026-05-11_at_6.33.13_PM_xitb8o.jpg"
+                        alt="Vikas Sharma – Founder, Vrinda International" />
+                    <div class="founder-ribbon">
+                        <h4>Vikas Sharma</h4>
+                        <span>Founder &amp; CEO, Vrinda International</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTRIES SECTION -->
+    <section class="countries">
+        <div class="container">
+            <div class="countries-head">
+                <div class="section-label">Countries You Can Visit</div>
+                <h2 class="section-title">Countries we're supporting for the <em>immigration</em></h2>
+                <span class="title-underline"></span>
+            </div>
+        </div>
+        <div class="countries-marquee">
+            <div class="countries-track">
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/de.png" alt="Germany" /></div>
+                    <span class="country-name">Germany</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/br.png" alt="Brazil" /></div><span
+                        class="country-name">Brazil</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ru.png" alt="Russia" /></div><span
+                        class="country-name">Russia</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/gb.png" alt="England" /></div>
+                    <span class="country-name">England</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/in.png" alt="India" /></div><span
+                        class="country-name">India</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/au.png" alt="Australia" /></div>
+                    <span class="country-name">Australia</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ca.png" alt="Canada" /></div><span
+                        class="country-name">Canada</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/us.png" alt="USA" /></div><span
+                        class="country-name">USA</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/nz.png" alt="New Zealand" /></div>
+                    <span class="country-name">New Zealand</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/fr.png" alt="France" /></div><span
+                        class="country-name">France</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ae.png" alt="UAE" /></div><span
+                        class="country-name">UAE</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/sg.png" alt="Singapore" /></div>
+                    <span class="country-name">Singapore</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/de.png" alt="Germany" /></div>
+                    <span class="country-name">Germany</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/br.png" alt="Brazil" /></div><span
+                        class="country-name">Brazil</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ru.png" alt="Russia" /></div><span
+                        class="country-name">Russia</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/gb.png" alt="England" /></div>
+                    <span class="country-name">England</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/in.png" alt="India" /></div><span
+                        class="country-name">India</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/au.png" alt="Australia" /></div>
+                    <span class="country-name">Australia</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ca.png" alt="Canada" /></div><span
+                        class="country-name">Canada</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/us.png" alt="USA" /></div><span
+                        class="country-name">USA</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/nz.png" alt="New Zealand" /></div>
+                    <span class="country-name">New Zealand</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/fr.png" alt="France" /></div><span
+                        class="country-name">France</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/ae.png" alt="UAE" /></div><span
+                        class="country-name">UAE</span>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag-wrap"><img src="https://flagcdn.com/w160/sg.png" alt="Singapore" /></div>
+                    <span class="country-name">Singapore</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Vrinda International</h3>
+                    <p>A trusted recruitment and education consultancy committed to connecting talent with the right
+                        opportunities and global growth pathways.</p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Recruitment Services</a></li>
+                        <li><a href="#">Overseas Education</a></li>
+                        <li><a href="#">Online Coaching</a></li>
+                        <li><a href="#">IELTS / GRE / GMAT</a></li>
+                        <li><a href="#">Career Counseling</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <p>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Vrinda International, India
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.15 1.25 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.36-.36a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                        </svg>
+                        +91 XXXXX XXXXX
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        info@vrindainternational.com
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2024 Vrinda International. All rights reserved.</span>
+                <span>Designed with care for global talent &amp; career growth.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT: TRUSTPILOT TESTIMONIALS SLIDER
+         Desktop: 2 visible | Mobile (≤768px): 1 visible
+    ============================================================ -->
+    <script>
+        (function () {
+            const track = document.getElementById('reviews-track');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('testimonials-dots');
+            const cards = Array.from(track.querySelectorAll('.review-card'));
+            const total = cards.length;
+            let current = 0;
+            let autoSlideInterval;
+
+            function getVisible() {
+                return window.innerWidth <= 768 ? 1 : 2;
+            }
+
+            function getMax() {
+                return Math.max(0, total - getVisible());
+            }
+
+            function buildDots() {
+                dotsContainer.innerHTML = '';
+                const max = getMax();
+                for (let i = 0; i <= max; i++) {
+                    const d = document.createElement('button');
+                    d.className = 'testimonials-dot' + (i === current ? ' active' : '');
+                    d.setAttribute('aria-label', 'Go to review ' + (i + 1));
+                    d.addEventListener('click', function () { current = i; update(); resetAutoSlide(); });
+                    dotsContainer.appendChild(d);
+                }
+            }
+
+            function update() {
+                const max = getMax();
+                if (current > max) current = max;
+                const gap = 20;
+                const cardW = cards[0].offsetWidth + gap;
+                track.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+                const dots = dotsContainer.querySelectorAll('.testimonials-dot');
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+                prevBtn.style.opacity = current === 0 ? '0.4' : '1';
+                nextBtn.style.opacity = current >= max ? '0.4' : '1';
+            }
+
+            function autoSlide() {
+                const max = getMax();
+                if (current < max) {
+                    current++;
+                } else {
+                    current = 0;
+                }
+                update();
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(autoSlide, 15000);
+            }
+
+            prevBtn.addEventListener('click', function () {
+                if (current > 0) { current--; update(); }
+                resetAutoSlide();
+            });
+
+            nextBtn.addEventListener('click', function () {
+                if (current < getMax()) { current++; update(); }
+                resetAutoSlide();
+            });
+
+            window.addEventListener('resize', function () { current = 0; buildDots(); update(); });
+
+            buildDots();
+            update();
+            autoSlideInterval = setInterval(autoSlide, 15000);
+        })();
+    </script>
+
+    <!-- ============================================================
+         JAVASCRIPT: GOOGLE TESTIMONIALS SLIDER
+    ============================================================ -->
+    <script>
+        (function () {
+            const track = document.getElementById('g-track');
+            const prevBtn = document.getElementById('g-prev');
+            const nextBtn = document.getElementById('g-next');
+            const cards = Array.from(track.querySelectorAll('.g-card'));
+            let current = 0;
+            let autoSlideInterval;
+
+            function getVisibleCards() {
+                const width = window.innerWidth;
+                if (width <= 768) return 1;
+                if (width <= 1024) return 2;
+                return 3;
+            }
+
+            function slide() {
+                const visible = getVisibleCards();
+                const max = Math.max(0, cards.length - visible);
+                if (current > max) current = max;
+                const gap = 20;
+                const cardW = cards[0].offsetWidth + gap;
+                track.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+                prevBtn.style.opacity = current === 0 ? '0.4' : '1';
+                nextBtn.style.opacity = current >= max ? '0.4' : '1';
+            }
+
+            function autoSlide() {
+                const visible = getVisibleCards();
+                const max = Math.max(0, cards.length - visible);
+                current = (current + 1) % (max + 1);
+                slide();
+            }
+
+            function startAutoSlide() { autoSlideInterval = setInterval(autoSlide, 5000); }
+            function resetAutoSlide() { clearInterval(autoSlideInterval); startAutoSlide(); }
+
+            nextBtn.addEventListener('click', function () {
+                const visible = getVisibleCards();
+                const max = Math.max(0, cards.length - visible);
+                if (current < max) { current++; slide(); resetAutoSlide(); }
+            });
+
+            prevBtn.addEventListener('click', function () {
+                if (current > 0) { current--; slide(); resetAutoSlide(); }
+            });
+
+            window.addEventListener('resize', function () { current = 0; slide(); });
+            window.addEventListener('load', function () { slide(); startAutoSlide(); });
+            setTimeout(function () { slide(); startAutoSlide(); }, 100);
+        })();
+    </script>
+
+</body>
+
+</html>
